@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ethical Hacker | Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --cursor-color: #e5e5e5;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #0a0a0a;
+            color: #e5e5e5;
+            background-image: radial-gradient(circle, #333 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        .font-mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0a0a0a;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+
+        /* Typewriter Cursor */
+        .cursor::after {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 1.2em;
+            background-color: var(--cursor-color);
+            margin-left: 4px;
+            vertical-align: bottom;
+            animation: blink 1s step-end infinite;
+        }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0;
+            }
+        }
+
+        /* Fade In Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Glitch effect on hover for name */
+        .glitch-hover:hover {
+            text-shadow: 2px 0 #fff, -2px 0 #333;
+        }
+
+        /* Hero Animations */
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes glow-pulse {
+
+            0%,
+            100% {
+                box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+            }
+
+            50% {
+                box-shadow: 0 0 40px rgba(255, 255, 255, 0.2);
+            }
+        }
+
+        @keyframes slide-in-left {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slide-in-right {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fade-in-up {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .animate-glow {
+            animation: glow-pulse 2s ease-in-out infinite;
+        }
+
+        .animate-slide-left {
+            animation: slide-in-left 0.8s ease-out forwards;
+            opacity: 1 !important;
+        }
+
+        .animate-slide-right {
+            animation: slide-in-right 0.8s ease-out forwards;
+            opacity: 1 !important;
+        }
+
+        .animate-fade-up {
+            animation: fade-in-up 0.6s ease-out forwards;
+            opacity: 1 !important;
+        }
+
+        .delay-100 {
+            animation-delay: 0.1s;
+        }
+
+        .delay-200 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-300 {
+            animation-delay: 0.3s;
+        }
+
+        .delay-400 {
+            animation-delay: 0.4s;
+        }
+
+        .delay-500 {
+            animation-delay: 0.5s;
+        }
+
+        .hero-image {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .hero-image:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 50px rgba(255, 255, 255, 0.15);
+        }
+
+        .skill-tag {
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            transform: translateY(-2px);
+            border-color: #fff;
+            color: #fff;
+        }
+
+        .btn-primary {
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-secondary {
+            transition: all 0.3s ease;
+        }
+
+        /* Glassmorphism Utilities */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+        }
+
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Marquee Animation */
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .marquee-container {
+            mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+        }
+
+        .marquee-content {
+            display: flex;
+            gap: 4rem;
+            animation: scroll 30s linear infinite;
+            width: max-content;
+        }
+
+        .marquee-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: 'JetBrains Mono', monospace;
+            color: #888;
+            font-size: 1.1rem;
+            white-space: nowrap;
+            transition: color 0.3s;
+        }
+
+        .marquee-item:hover {
+            color: #fff;
+        }
+
+        /* Gradient Text Utility */
+        .text-gradient {
+            background: linear-gradient(to right, #fff, #888);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+
+<body class="antialiased selection:bg-white selection:text-black overflow-x-hidden bg-black">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 top-0 left-0 border-b border-white/5 bg-black/80 backdrop-blur-md">
+        <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+            <a href="#" class="text-xl font-bold tracking-tight hover:text-white transition-colors">
+                Bhushan Rambhapure
+            </a>
+
+            <div class="hidden md:flex space-x-8 text-sm font-medium text-neutral-400">
+                <a href="#about" class="hover:text-white transition-colors">ABOUT</a>
+                <a href="#experience" class="hover:text-white transition-colors">EXPERIENCE</a>
+                <a href="#projects" class="hover:text-white transition-colors">PROJECTS</a>
+                <a href="#skills" class="hover:text-white transition-colors">SKILLS</a>
+                <a href="#contact" class="hover:text-white transition-colors">CONTACT</a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="menu-btn" class="md:hidden text-white">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-black border-b border-white/10 p-4 absolute w-full">
+            <div class="flex flex-col space-y-4 text-center text-sm font-medium text-neutral-400">
+                <a href="#about" class="hover:text-white py-2">ABOUT</a>
+                <a href="#experience" class="hover:text-white py-2">EXPERIENCE</a>
+                <a href="#projects" class="hover:text-white py-2">PROJECTS</a>
+                <a href="#skills" class="hover:text-white py-2">SKILLS</a>
+                <a href="#contact" class="hover:text-white py-2">CONTACT</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="min-h-screen flex items-center pt-20 pb-16 relative overflow-hidden">
+        <!-- Animated Background Elements -->
+        <div class="absolute inset-0 z-0">
+            <div class="absolute top-20 left-10 w-72 h-72 bg-white/5 rounded-full blur-[100px] animate-float"></div>
+            <div
+                class="absolute bottom-20 right-10 w-96 h-96 bg-white/3 rounded-full blur-[120px] animate-float delay-500">
+            </div>
+            <div
+                class="absolute top-1/2 left-1/2 w-64 h-64 bg-neutral-800/30 rounded-full blur-[80px] animate-float delay-300">
+            </div>
+        </div>
+
+        <div class="max-w-6xl mx-auto px-6 z-10 w-full">
+            <div class="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
+
+                <!-- Left Column - Text Content -->
+                <div class="order-2 md:order-1">
+                    <!-- Status Badge -->
+                    <div
+                        class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-neutral-700 bg-neutral-900/50 mb-6 animate-fade-up opacity-0">
+                        <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                        <span class="text-xs font-mono text-neutral-400 tracking-wider">AVAILABLE FOR PROJECTS</span>
+                    </div>
+
+                    <!-- Name with animation -->
+                    <h1
+                        class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-4 leading-tight animate-slide-left opacity-0">
+                        Bhushan
+                        <span class="text-gradient">Rambhapure</span>
+                    </h1>
+
+                    <!-- Typewriter Role -->
+                    <div class="mb-6 animate-fade-up opacity-0 delay-200">
+                        <span id="typewriter" class="text-xl md:text-2xl font-mono text-neutral-400 cursor">Security
+                            Researcher</span>
+                    </div>
+
+                    <!-- Description -->
+                    <p class="text-lg text-neutral-400 mb-6 leading-relaxed animate-fade-up opacity-0 delay-300">
+                        Technical Expert at <span class="text-white">Maharashtra Police (Akola Cyber Cell)</span>.
+                        Specializing in digital forensics, threat intelligence, and cybercrime investigation.
+                    </p>
+
+                    <!-- Skill Tags -->
+                    <div class="flex flex-wrap gap-3 mb-8 animate-fade-up opacity-0 delay-400">
+                        <span
+                            class="skill-tag px-4 py-2 border border-neutral-700 rounded-full text-sm text-neutral-400 font-mono">
+                            <i data-lucide="shield" class="w-3 h-3 inline mr-1"></i>OSINT
+                        </span>
+                        <span
+                            class="skill-tag px-4 py-2 border border-neutral-700 rounded-full text-sm text-neutral-400 font-mono">
+                            <i data-lucide="hard-drive" class="w-3 h-3 inline mr-1"></i>Forensics
+                        </span>
+                        <span
+                            class="skill-tag px-4 py-2 border border-neutral-700 rounded-full text-sm text-neutral-400 font-mono">
+                            <i data-lucide="target" class="w-3 h-3 inline mr-1"></i>Red Team
+                        </span>
+                        <span
+                            class="skill-tag px-4 py-2 border border-neutral-700 rounded-full text-sm text-neutral-400 font-mono">
+                            <i data-lucide="code" class="w-3 h-3 inline mr-1"></i>Malware Analysis
+                        </span>
+                    </div>
+
+                    <!-- CTA Buttons -->
+                    <div class="flex flex-col sm:flex-row gap-4 animate-fade-up opacity-0 delay-500">
+                        <a href="#contact"
+                            class="btn-primary px-8 py-4 bg-white text-black font-semibold rounded-lg flex items-center justify-center gap-2 group">
+                            <i data-lucide="mail" class="w-4 h-4"></i>
+                            Get in Touch
+                            <i data-lucide="arrow-right"
+                                class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                        <a href="#projects"
+                            class="btn-secondary px-8 py-4 border border-neutral-600 text-neutral-300 font-semibold rounded-lg flex items-center justify-center gap-2">
+                            <i data-lucide="folder" class="w-4 h-4"></i>
+                            View Projects
+                        </a>
+                    </div>
+
+                    <!-- Stats -->
+                    <div
+                        class="grid grid-cols-3 gap-6 mt-10 pt-8 border-t border-neutral-800 animate-fade-up opacity-0 delay-500">
+                        <div class="text-center">
+                            <div class="text-2xl md:text-3xl font-bold text-white">50+</div>
+                            <div class="text-xs text-neutral-500 font-mono mt-1">CASES SOLVED</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-2xl md:text-3xl font-bold text-white">5+</div>
+                            <div class="text-xs text-neutral-500 font-mono mt-1">YEARS EXP</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-2xl md:text-3xl font-bold text-white">10+</div>
+                            <div class="text-xs text-neutral-500 font-mono mt-1">CERTIFICATIONS</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column - Image -->
+                <div class="order-1 md:order-2 flex justify-center animate-slide-right opacity-0">
+                    <div class="relative">
+                        <!-- Decorative elements -->
+                        <div
+                            class="absolute -inset-4 bg-gradient-to-r from-neutral-800 to-neutral-900 rounded-2xl blur-xl opacity-50 animate-float">
+                        </div>
+
+                        <!-- Main Image -->
+                        <div
+                            class="hero-image relative w-72 h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-2xl overflow-hidden border border-neutral-700 animate-glow">
+                            <img src="WhatsApp Image 2026-01-26 at 4.51.32 PM.jpeg" alt="Bhushan Rambhapure"
+                                class="w-full h-full object-cover">
+
+                            <!-- Overlay gradient -->
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent">
+                            </div>
+                        </div>
+
+                        <!-- Floating Elements -->
+                        <div
+                            class="absolute -top-4 -right-4 px-4 py-2 bg-neutral-900 border border-neutral-700 rounded-lg animate-float shadow-lg">
+                            <span class="text-xs font-mono text-green-400">● Online</span>
+                        </div>
+
+                        <div
+                            class="absolute -bottom-4 -left-4 px-4 py-2 bg-neutral-900 border border-neutral-700 rounded-lg animate-float delay-200 shadow-lg">
+                            <i data-lucide="shield-check" class="w-4 h-4 text-blue-400 inline"></i>
+                            <span class="text-xs font-mono text-neutral-400 ml-1">Verified Expert</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Scroll indicator -->
+        <div
+            class="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce">
+            <span class="text-xs font-mono text-neutral-600">SCROLL</span>
+            <i data-lucide="chevron-down" class="text-neutral-500 w-5 h-5"></i>
+        </div>
+    </section>
+
+    <!-- Tech Marquee Section -->
+    <section class="py-10 border-y border-neutral-900 bg-neutral-950 overflow-hidden relative">
+        <div class="marquee-container w-full max-w-full">
+            <div class="marquee-content">
+                <!-- Group 1 -->
+                <span class="marquee-item"><i data-lucide="terminal"></i>Kali Linux</span>
+                <span class="marquee-item"><i data-lucide="code"></i>Python</span>
+                <span class="marquee-item"><i data-lucide="shield"></i>Metasploit</span>
+                <span class="marquee-item"><i data-lucide="search"></i>Maltego</span>
+                <span class="marquee-item"><i data-lucide="wifi"></i>Wireshark</span>
+                <span class="marquee-item"><i data-lucide="database"></i>SQL Injection</span>
+                <span class="marquee-item"><i data-lucide="globe"></i>OSINT</span>
+                <span class="marquee-item"><i data-lucide="smartphone"></i>Mobile Forensics</span>
+                <span class="marquee-item"><i data-lucide="lock"></i>Cryptography</span>
+                <span class="marquee-item"><i data-lucide="server"></i>Burp Suite</span>
+
+                <!-- Duplicate for seamless scroll -->
+                <span class="marquee-item"><i data-lucide="terminal"></i>Kali Linux</span>
+                <span class="marquee-item"><i data-lucide="code"></i>Python</span>
+                <span class="marquee-item"><i data-lucide="shield"></i>Metasploit</span>
+                <span class="marquee-item"><i data-lucide="search"></i>Maltego</span>
+                <span class="marquee-item"><i data-lucide="wifi"></i>Wireshark</span>
+                <span class="marquee-item"><i data-lucide="database"></i>SQL Injection</span>
+                <span class="marquee-item"><i data-lucide="globe"></i>OSINT</span>
+                <span class="marquee-item"><i data-lucide="smartphone"></i>Mobile Forensics</span>
+                <span class="marquee-item"><i data-lucide="lock"></i>Cryptography</span>
+                <span class="marquee-item"><i data-lucide="server"></i>Burp Suite</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 relative">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="order-2 md:order-1 reveal">
+                    <h2 class="text-3xl font-bold mb-6">About Me</h2>
+                    <h3 class="text-xl text-neutral-300 mb-6 font-medium">Securing the Digital Frontier, One Bit at a
+                        Time.</h3>
+                    <p class="text-neutral-400 mb-6 leading-relaxed">
+                        I am currently working as a Technical Expert at the Maharashtra Police (Akola Cyber Cell), where
+                        I leverage advanced digital forensics and OSINT techniques to solve complex cybercrimes. My
+                        journey started with a curiosity for how systems break, which evolved into a passion for
+                        securing them.
+                    </p>
+                    <p class="text-neutral-400 mb-8 leading-relaxed">
+                        Beyond my official duties, I am a National Cyber Volunteer and a Certified Cybersecurity
+                        Educator. I believe in proactive defense and empowering the community with knowledge to stay
+                        safe in the digital world.
+                    </p>
+
+                    <a href="#experience"
+                        class="text-white border-b border-white pb-1 hover:text-neutral-300 transition-colors inline-flex items-center gap-2">
+                        Read My Experience <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
+                <div class="order-1 md:order-2 reveal">
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="glass-card p-6 rounded-2xl flex flex-col items-center text-center">
+                            <i data-lucide="target" class="w-8 h-8 text-red-400 mb-3"></i>
+                            <span class="text-2xl font-bold text-white">100%</span>
+                            <span class="text-xs text-neutral-500 mt-1 uppercase tracking-wider">Mission Success</span>
+                        </div>
+                        <div class="glass-card p-6 rounded-2xl flex flex-col items-center text-center mt-8">
+                            <i data-lucide="users" class="w-8 h-8 text-blue-400 mb-3"></i>
+                            <span class="text-2xl font-bold text-white">200+</span>
+                            <span class="text-xs text-neutral-500 mt-1 uppercase tracking-wider">Officers Trained</span>
+                        </div>
+                        <div class="glass-card p-6 rounded-2xl flex flex-col items-center text-center -mt-8">
+                            <i data-lucide="award" class="w-8 h-8 text-yellow-400 mb-3"></i>
+                            <span class="text-2xl font-bold text-white">Top 10</span>
+                            <span class="text-xs text-neutral-500 mt-1 uppercase tracking-wider">National Rank</span>
+                        </div>
+                        <div class="glass-card p-6 rounded-2xl flex flex-col items-center text-center">
+                            <i data-lucide="clock" class="w-8 h-8 text-green-400 mb-3"></i>
+                            <span class="text-2xl font-bold text-white">24/7</span>
+                            <span class="text-xs text-neutral-500 mt-1 uppercase tracking-wider">Incident
+                                Response</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-24 bg-neutral-950/50 border-t border-neutral-900">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-16 flex items-center gap-4 reveal">
+                <span class="text-neutral-500 font-mono text-xl">01.</span> Experience
+            </h2>
+
+            <div class="relative border-l border-neutral-800 ml-3 md:ml-6 space-y-12">
+
+                <!-- Role 1 -->
+                <div class="relative pl-8 md:pl-12 reveal">
+                    <span
+                        class="absolute -left-[5px] top-2 w-3 h-3 bg-white rounded-full ring-4 ring-neutral-950"></span>
+
+                    <div class="flex flex-col md:flex-row md:items-center justify-between mb-4">
+                        <div>
+                            <h3 class="text-xl font-bold text-white">Technical Expert</h3>
+                            <p class="text-neutral-400 font-medium">Akola Cyber Cell (Maharashtra Police)</p>
+                        </div>
+                        <span
+                            class="mt-2 md:mt-0 px-3 py-1 text-xs font-mono border border-neutral-800 rounded bg-neutral-900 text-neutral-400 w-fit">Current
+                            Role</span>
+                    </div>
+
+                    <div class="glass-card rounded-xl p-8">
+                        <ul class="space-y-4 text-neutral-400">
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="shield-check" class="w-5 h-5 text-white shrink-0 mt-1"></i>
+                                <span>Provide critical technical assistance to law enforcement in cybercrime
+                                    investigations and digital evidence recovery.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="search" class="w-5 h-5 text-white shrink-0 mt-1"></i>
+                                <span>Conduct forensic analysis on mobile devices and laptops to assist in legal
+                                    proceedings and evidence extraction.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="users" class="w-5 h-5 text-white shrink-0 mt-1"></i>
+                                <span><strong class="text-white">National Cyber Volunteer:</strong> Actively contribute
+                                    to national cybercrime prevention and public awareness initiatives.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects / Achievements Section -->
+    <section id="projects" class="py-24 bg-black">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-16 flex items-center gap-4 reveal">
+                <span class="text-neutral-500 font-mono text-xl">02.</span> Projects & Achievements
+            </h2>
+
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- Project 1 -->
+                <div class="group relative glass-card rounded-2xl overflow-hidden reveal">
+                    <div class="p-8 h-full flex flex-col">
+                        <div class="flex justify-between items-start mb-6">
+                            <div
+                                class="p-3 bg-neutral-800/50 rounded-lg group-hover:bg-white group-hover:text-black transition-colors">
+                                <i data-lucide="eye" class="w-6 h-6"></i>
+                            </div>
+                            <span class="font-mono text-xs text-neutral-500">OSINT</span>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3 group-hover:text-white transition-colors">EGELA EYE OSINT
+                            FRAMEWORK</h3>
+                        <p class="text-neutral-400 mb-6 flex-grow">Lead Developer of an advanced Open Source
+                            Intelligence tool that automates data gathering, reducing manual investigation time for
+                            field officers.</p>
+                        <div class="flex gap-2 flex-wrap font-mono text-xs text-neutral-500">
+                            <span class="px-2 py-1 border border-neutral-800 rounded">Python</span>
+                            <span class="px-2 py-1 border border-neutral-800 rounded">Automation</span>
+                            <span class="px-2 py-1 border border-neutral-800 rounded">Investigation</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="group relative glass-card rounded-2xl overflow-hidden reveal">
+                    <div class="p-8 h-full flex flex-col">
+                        <div class="flex justify-between items-start mb-6">
+                            <div
+                                class="p-3 bg-neutral-800/50 rounded-lg group-hover:bg-white group-hover:text-black transition-colors">
+                                <i data-lucide="bot" class="w-6 h-6"></i>
+                            </div>
+                            <span class="font-mono text-xs text-neutral-500">AI / AUTOMATION</span>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3 group-hover:text-white transition-colors">Akola CopConnect AI
+                        </h3>
+                        <p class="text-neutral-400 mb-6 flex-grow">Developed an AI-driven chatbot for Akola Police to
+                            enhance public interaction and streamline citizen reporting processes.</p>
+                        <div class="flex gap-2 flex-wrap font-mono text-xs text-neutral-500">
+                            <span class="px-2 py-1 border border-neutral-800 rounded">AI</span>
+                            <span class="px-2 py-1 border border-neutral-800 rounded">Chatbot</span>
+                            <span class="px-2 py-1 border border-neutral-800 rounded">Public Safety</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Achievement 3 -->
+                <div class="group relative glass-card rounded-2xl overflow-hidden reveal">
+                    <div class="p-8 h-full flex flex-col">
+                        <div class="flex justify-between items-start mb-6">
+                            <div
+                                class="p-3 bg-neutral-800/50 rounded-lg group-hover:bg-white group-hover:text-black transition-colors">
+                                <i data-lucide="award" class="w-6 h-6"></i>
+                            </div>
+                            <span class="font-mono text-xs text-neutral-500">CERTIFICATION</span>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3 group-hover:text-white transition-colors">Cyber Educator</h3>
+                        <p class="text-neutral-400 mb-6 flex-grow">Recognized as a Certified Cybersecurity Educator
+                            Professional (CCEP) for significant contributions to security awareness and education.</p>
+                    </div>
+                </div>
+
+                <!-- Achievement 4 -->
+                <div class="group relative glass-card rounded-2xl overflow-hidden reveal">
+                    <div class="p-8 h-full flex flex-col">
+                        <div class="flex justify-between items-start mb-6">
+                            <div
+                                class="p-3 bg-neutral-800/50 rounded-lg group-hover:bg-white group-hover:text-black transition-colors">
+                                <i data-lucide="hard-drive" class="w-6 h-6"></i>
+                            </div>
+                            <span class="font-mono text-xs text-neutral-500">FORENSICS</span>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3 group-hover:text-white transition-colors">Digital Forensics
+                            Expert</h3>
+                        <p class="text-neutral-400 mb-6 flex-grow">Successfully performed forensic analysis on multiple
+                            devices in coordination with the Akola Cyber Cell, aiding active investigations.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-24 bg-neutral-950/50 border-t border-neutral-900">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-16 flex items-center gap-4 reveal">
+                <span class="text-neutral-500 font-mono text-xl">03.</span> Technical Arsenal
+            </h2>
+
+            <div class="grid md:grid-cols-3 gap-8 reveal">
+
+                <!-- Category 1 -->
+                <div class="space-y-6">
+                    <h3 class="text-lg font-mono text-white border-b border-white/10 pb-2">OFFENSIVE SECURITY</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span
+                            class="px-3 py-2 bg-neutral-900 border border-neutral-800 rounded text-sm text-neutral-300 hover:border-white transition-colors cursor-default">Red
+                            Team Ops (CRTOM)</span>
+                        <span
+                            class="px-3 py-2 bg-neutral-900 border border-neutral-800 rounded text-sm text-neutral-300 hover:border-white transition-colors cursor-default">Penetration
+                            Testing (CAPT)</span>
+                        <span
+                            class="px-3 py-2 bg-neutral-900 border border-neutral-800 rounded text-sm text-neutral-300 hover:border-white transition-colors cursor-default">Web
+                            Security (CWSE)</span>
+                    </div>
+                </div>
+
+                <!-- Category 2 -->
+                <div class="space-y-6">
+                    <h3 class="text-lg font-mono text-white border-b border-white/10 pb-2">FORENSICS & INTEL</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span
+                            class="px-3 py-2 bg-neutral-900 border border-neutral-800 rounded text-sm text-neutral-300 hover:border-white transition-colors cursor-default">Mobile
+                            Forensics</span>
+                        <span
+                            class="px-3 py-2 bg-neutral-900 border border-neutral-800 rounded text-sm text-neutral-300 hover:border-white transition-colors cursor-default">Malware
+                            Analysis</span>
+                        <span
+                            class="px-3 py-2 bg-neutral-900 border border-neutral-800 rounded text-sm text-neutral-300 hover:border-white transition-colors cursor-default">Reverse
+                            Engineering</span>
+                        <span
+                            class="px-3 py-2 bg-neutral-900 border border-neutral-800 rounded text-sm text-neutral-300 hover:border-white transition-colors cursor-default">Advanced
+                            OSINT</span>
+                        <span
+                            class="px-3 py-2 bg-neutral-900 border border-neutral-800 rounded text-sm text-neutral-300 hover:border-white transition-colors cursor-default">Dark
+                            Web Monitoring</span>
+                    </div>
+                </div>
+
+                <!-- Category 3 -->
+                <div class="space-y-6">
+                    <h3 class="text-lg font-mono text-white border-b border-white/10 pb-2">INFRA & TOOLS</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span
+                            class="px-3 py-2 bg-neutral-900 border border-neutral-800 rounded text-sm text-neutral-300 hover:border-white transition-colors cursor-default">ICS/SCADA
+                            Security</span>
+                        <span
+                            class="px-3 py-2 bg-neutral-900 border border-neutral-800 rounded text-sm text-neutral-300 hover:border-white transition-colors cursor-default">Kali
+                            Linux (Adv)</span>
+                        <span
+                            class="px-3 py-2 bg-neutral-900 border border-neutral-800 rounded text-sm text-neutral-300 hover:border-white transition-colors cursor-default">CSI
+                            Linux</span>
+                        <span
+                            class="px-3 py-2 bg-neutral-900 border border-neutral-800 rounded text-sm text-neutral-300 hover:border-white transition-colors cursor-default">Windows
+                            Internals</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section class="py-24 bg-black">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-16 flex items-center gap-4 reveal">
+                <span class="text-neutral-500 font-mono text-xl">04.</span> Education
+            </h2>
+
+            <div class="grid md:grid-cols-3 gap-6 reveal">
+                <div class="p-6 bg-neutral-900/20 border border-neutral-800 rounded-lg">
+                    <div class="text-2xl font-bold mb-2 text-white">BCA</div>
+                    <div class="text-sm font-mono text-neutral-500 mb-4">Cyber Security</div>
+                    <div class="text-neutral-400">Shoolini University</div>
+                </div>
+
+                <div class="p-6 bg-neutral-900/20 border border-neutral-800 rounded-lg">
+                    <div class="text-2xl font-bold mb-2 text-white">Diploma</div>
+                    <div class="text-sm font-mono text-neutral-500 mb-4">Completed 2022</div>
+                    <div class="text-neutral-400">Manav Industrial Training Institute, Akola</div>
+                </div>
+
+                <div class="p-6 bg-neutral-900/20 border border-neutral-800 rounded-lg">
+                    <div class="text-2xl font-bold mb-2 text-white">12th Commerce</div>
+                    <div class="text-sm font-mono text-neutral-500 mb-4">Completed 2020</div>
+                    <div class="text-neutral-400">Dhanabhai Vidyalay, Balapur</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 bg-neutral-950 border-t border-neutral-900">
+        <div class="max-w-3xl mx-auto px-6 text-center">
+            <h2 class="text-3xl font-bold mb-8 reveal">Ready to Secure Your Assets?</h2>
+            <p class="text-neutral-400 mb-12 reveal">
+                Whether you need digital forensics, penetration testing, or advanced threat intelligence, I'm here to
+                help.
+            </p>
+
+            <div class="flex flex-col md:flex-row justify-center items-center gap-6 reveal">
+                <a href="mailto:bhushanrambhapure111@gamil.com"
+                    class="flex items-center gap-3 px-8 py-4 bg-white text-black font-bold rounded hover:bg-neutral-200 transition-colors">
+                    <i data-lucide="mail"></i>
+                    Send Email
+                </a>
+                <a href="#" target="_blank"
+                    class="flex items-center gap-3 px-8 py-4 border border-neutral-700 text-white font-bold rounded hover:bg-neutral-800 transition-colors">
+                    <i data-lucide="globe"></i>
+                    Visit Website
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black border-t border-neutral-900 py-12">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <!-- Brand / Copyright -->
+                <div class="text-center md:text-left">
+                    <a href="#"
+                        class="text-lg font-bold tracking-tight text-white hover:text-neutral-300 transition-colors mb-2 block">
+                        Bhushan Rambhapure
+                    </a>
+                    <p class="text-neutral-500 text-sm">&copy; 2024 Ethical Hacker Portfolio. All rights reserved.</p>
+                </div>
+
+                <!-- Social Links -->
+                <div class="flex gap-6">
+                    <a href="https://github.com/BhushanRambhapure" target="_blank"
+                        class="text-neutral-400 hover:text-white transition-colors">
+                        <i data-lucide="github" class="w-5 h-5"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/bhushan-rambhapure-%F0%9F%87%AE%F0%9F%87%B3-73a536212?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+                        target="_blank" class="text-neutral-400 hover:text-white transition-colors">
+                        <i data-lucide="linkedin" class="w-5 h-5"></i>
+                    </a>
+                    <a href="https://x.com/BRambhapure" target="_blank"
+                        class="text-neutral-400 hover:text-white transition-colors">
+                        <i data-lucide="twitter" class="w-5 h-5"></i>
+                    </a>
+                    <a href="https://www.instagram.com/bhushan.r.07?igsh=bGJyaDNkYmp0aWk2" target="_blank"
+                        class="text-neutral-400 hover:text-white transition-colors">
+                        <i data-lucide="instagram" class="w-5 h-5"></i>
+                    </a>
+                </div>
+
+                <!-- Languages -->
+                <div class="flex flex-col items-center md:items-end gap-2">
+                    <span class="text-xs font-mono text-neutral-600 uppercase">Languages</span>
+                    <div class="flex gap-3 font-mono text-sm text-neutral-400">
+                        <span class="hover:text-white cursor-pointer transition-colors" title="English">EN</span>
+                        <span class="hover:text-white cursor-pointer transition-colors" title="Marathi">MR</span>
+                        <span class="hover:text-white cursor-pointer transition-colors" title="Hindi">HI</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Icons
+        lucide.createIcons();
+
+        // Scroll Reveal Animation
+        const reveals = document.querySelectorAll('.reveal');
+
+        function reveal() {
+            for (let i = 0; i < reveals.length; i++) {
+                let windowHeight = window.innerHeight;
+                let elementTop = reveals[i].getBoundingClientRect().top;
+                let elementVisible = 150;
+
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+
+        window.addEventListener("scroll", reveal);
+        reveal(); // Trigger once on load
+
+        // Typewriter Effect Logic
+        const textElement = document.getElementById('typewriter');
+        const phrases = ["Security Researcher", "OSINT Specialist", "Forensic Expert", "Red Teamer"];
+        let phraseIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let typeSpeed = 100;
+
+        function type() {
+            const currentPhrase = phrases[phraseIndex];
+
+            if (isDeleting) {
+                textElement.textContent = currentPhrase.substring(0, charIndex - 1);
+                charIndex--;
+                typeSpeed = 50;
+            } else {
+                textElement.textContent = currentPhrase.substring(0, charIndex + 1);
+                charIndex++;
+                typeSpeed = 100;
+            }
+
+            if (!isDeleting && charIndex === currentPhrase.length) {
+                isDeleting = true;
+                typeSpeed = 2000; // Pause at end
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                phraseIndex = (phraseIndex + 1) % phrases.length;
+                typeSpeed = 500; // Pause before next word
+            }
+
+            setTimeout(type, typeSpeed);
+        }
+
+        document.addEventListener('DOMContentLoaded', type);
+
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+
+</html>
